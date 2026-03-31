@@ -19,7 +19,7 @@ private slots:
 
 private:
     QTcpServer *m_tcpServer;
-    QList<ClientHandler*> m_clients;   // список активных клиентов
+    QList<ClientHandler*> m_clients;
 };
 
 #endif // MYTCPSERVER_H

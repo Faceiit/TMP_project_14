@@ -2,8 +2,8 @@
 #include <QDebug>
 #include <QStringList>
 
-ClientHandler::ClientHandler(qintptr socketDescriptor, QObject* parent)
-    : QObject(parent)
+ClientHandler::ClientHandler(qintptr socketDescriptor, QObject *parent)
+    : QObject(parent), m_authenticated(false)
 {
     m_socket = new QTcpSocket(this);
     if (!m_socket->setSocketDescriptor(socketDescriptor)) {
@@ -15,7 +15,7 @@ ClientHandler::ClientHandler(qintptr socketDescriptor, QObject* parent)
     connect(m_socket, &QTcpSocket::readyRead, this, &ClientHandler::onReadyRead);
     connect(m_socket, &QTcpSocket::disconnected, this, &ClientHandler::onDisconnected);
 
-    // Приветствие
+    // Приветствие как в старом коде
     m_socket->write("Hello, World!!! I am echo server!\r\n");
 }
 
@@ -32,55 +32,132 @@ void ClientHandler::onReadyRead()
     while ((newlinePos = m_buffer.indexOf('\n')) != -1) {
         QByteArray line = m_buffer.left(newlinePos + 1);
         m_buffer.remove(0, newlinePos + 1);
-        line.chop(1);
-        if (line.endsWith('\r')) line.chop(1);
-        processCommand(line);
+        line.chop(1);                    // удаляем \n
+        if (line.endsWith('\r')) line.chop(1); // удаляем \r
+        processCommand(QString::fromUtf8(line).trimmed());
     }
 }
 
-void ClientHandler::onDisconnected()
+void ClientHandler::processCommand(const QString &cmd)
 {
-    emit disconnected(this);   // сообщаем серверу, что клиент ушёл
-    deleteLater();             // безопасное самоуничтожение
-}
+    if (cmd.isEmpty()) return;
 
-void ClientHandler::processCommand(const QByteArray& data)
-{
-    QString cmdLine = QString::fromUtf8(data).trimmed();
-    if (cmdLine.isEmpty()) return;
-
-    QStringList parts = cmdLine.split(' ', Qt::SkipEmptyParts);
+    QStringList parts = cmd.split(' ', Qt::SkipEmptyParts);
     if (parts.isEmpty()) return;
 
     QString command = parts[0].toUpper();
 
+    // Команды, доступные всегда (включая старые заглушки)
     if (command == "ECHO") {
-        QString message = parts.mid(1).join(' ');
-        handleEcho(message);
-    }
-    else if (command == "STATUS") {
+        handleEcho(parts);
+    } else if (command == "STATUS") {
         handleStatus();
-    }
-    else if (command == "QUIT") {
+    } else if (command == "QUIT") {
         handleQuit();
+    } else if (command == "REGISTER") {
+        handleRegister(parts);
+    } else if (command == "AUTH") {
+        handleAuth(parts);
     }
-    else {
-        m_socket->write("Unknown command\r\n");
+    // Команды, требующие авторизации
+    else if (m_authenticated) {
+        if (command == "GET_DATA") {
+            handleGetData();
+        } else if (command == "UPDATE_PROFILE") {
+            handleUpdateProfile();
+        }else if (command == "LOGOUT") {
+            handleLogout();
+        } else {
+            sendResponse("Unknown command.");
+        }
+    } else {
+        sendResponse("Please authenticate first (AUTH login password)");
     }
 }
 
-void ClientHandler::handleEcho(const QString& text)
+// ---------- Старые заглушки ----------
+void ClientHandler::handleEcho(const QStringList &parts)
 {
-    m_socket->write(("ECHO: " + text + "\r\n").toUtf8());
+    // ECHO [текст] – возвращает введённый текст
+    if (parts.size() > 1) {
+        QString message = parts.mid(1).join(' ');
+        sendResponse("ECHO: " + message);
+    } else {
+        sendResponse("ECHO: (nothing)");
+    }
 }
 
 void ClientHandler::handleStatus()
 {
-    m_socket->write("Server is running.\r\n");
+    // Заглушка статуса
+    QString status = "Server is running. "
+                     "Authenticated: " + QString(m_authenticated ? "yes" : "no");
+    sendResponse(status);
 }
 
 void ClientHandler::handleQuit()
 {
-    m_socket->write("Goodbye!\r\n");
-    m_socket->disconnectFromHost();  // инициирует закрытие
+    sendResponse("Goodbye!");
+    m_socket->disconnectFromHost();  // закрываем соединение
+}
+
+// ---------- Работа с БД ----------
+void ClientHandler::handleRegister(const QStringList &parts)
+{
+    if (parts.size() != 3) {
+        sendResponse("Usage: REGISTER login password");
+        return;
+    }
+    QString login = parts[1];
+    QString password = parts[2];
+
+    if (Database::getInstance()->addUser(login, password)) {
+        sendResponse("Registration successful.");
+    } else {
+        sendResponse("Registration failed (user may already exist).");
+    }
+}
+
+void ClientHandler::handleAuth(const QStringList &parts)
+{
+    if (parts.size() != 3) {
+        sendResponse("Usage: AUTH login password");
+        return;
+    }
+    QString login = parts[1];
+    QString password = parts[2];
+
+    if (Database::getInstance()->checkUser(login, password)) {
+        m_authenticated = true;
+        sendResponse("Authentication successful. Welcome!");
+        // можно сохранить login для дальнейшего использования
+    } else {
+        sendResponse("Authentication failed. Invalid login or password.");
+    }
+}
+
+// ---------- Новые заглушки (требуют авторизации) ----------
+void ClientHandler::handleGetData()
+{
+    sendResponse("GET_DATA stub: no data yet.");
+}
+
+void ClientHandler::handleUpdateProfile()
+{
+    sendResponse("UPDATE_PROFILE stub: profile update not implemented.");
+}
+void ClientHandler::handleLogout()
+{
+    m_authenticated = false;
+    sendResponse("You have been logged out.");
+}
+void ClientHandler::sendResponse(const QString &msg)
+{
+    m_socket->write(msg.toUtf8() + "\r\n");
+}
+
+void ClientHandler::onDisconnected()
+{
+    emit disconnected(this);
+    deleteLater();
 }
