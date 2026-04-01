@@ -15,3 +15,5 @@
 2) md5 (Message Digest Method 5) 
 3) Метод секущих
 4) Проверка того, что ответ пользователя есть цикл заданного графа
+
+https://drive.google.com/drive/folders/14W5lAl-61AAcyRerwqenxQL9nUIqrbYd?usp=sharing
