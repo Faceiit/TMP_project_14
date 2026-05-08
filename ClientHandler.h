@@ -3,40 +3,47 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QStringList>
 #include <QByteArray>
-#include "database.h"
 
 class ClientHandler : public QObject
 {
-    Q_OBJECT
-public:
-    explicit ClientHandler(qintptr socketDescriptor, QObject *parent = nullptr);
+Q_OBJECT
+    public:
+             explicit ClientHandler(QTcpSocket* socket, QObject *parent = nullptr);
     ~ClientHandler();
 
 signals:
-    void disconnected(ClientHandler *handler);
+    void disconnected(ClientHandler* handler);
 
 private slots:
     void onReadyRead();
     void onDisconnected();
 
 private:
-    QTcpSocket *m_socket;
-    QByteArray m_buffer;
-    bool m_authenticated;  // флаг авторизации
-
     void processCommand(const QString &cmd);
     void sendResponse(const QString &msg);
 
-    // Команды
-    void handleEcho(const QStringList &parts);   // старая заглушка
-    void handleStatus();                         // старая заглушка
-    void handleQuit();                           // старая заглушка
+    // Базовые команды
+    void helpMenu();
+    void handleQuit();
+
+    // Авторизация
     void handleRegister(const QStringList &parts);
-    void handleAuth(const QStringList &parts);
-    void handleGetData();        // новая заглушка (требует авторизации)
-    void handleUpdateProfile();  // новая заглушка (требует авторизации)
+    void handleLogin(const QStringList &parts);
     void handleLogout();
+
+    // Рабочие методы проекта
+    void handleDes(const QStringList &parts);
+    void handleMd5(const QStringList &parts);
+    void handleSecant(const QStringList &parts);
+    void handleGraphCycle(const QStringList &parts);
+
+    QTcpSocket* m_socket;
+    QByteArray m_buffer;
+    bool m_authenticated;
+    int m_clientId;
+    static int s_nextId;
 };
 
 #endif // CLIENTHANDLER_H
