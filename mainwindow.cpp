@@ -43,6 +43,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+QString MainWindow::buildDesCommand(const QString &text, const QString &key, bool decrypt)
+{
+    return QString("DES %1 %2 %3")
+        .arg(text, key, decrypt ? "true" : "false");
+}
+
 void MainWindow::onHelpClicked()
 {
     Client::getInstance()->sendCommand(m_clientId, "HELP");
@@ -70,8 +76,7 @@ void MainWindow::onDesClicked()
         return;
     }
 
-    QString cmd = QString("DES %1 %2 %3")
-                      .arg(text, key, decrypt ? "true" : "false");
+    QString cmd = buildDesCommand(text, key, decrypt);
     Client::getInstance()->sendCommand(m_clientId, cmd);
 }
 

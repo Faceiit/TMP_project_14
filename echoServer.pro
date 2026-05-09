@@ -6,6 +6,14 @@ QT += widgets network sql
 CONFIG += c++11 console
 CONFIG -= app_bundle
 
+# Режим юнит-тестов:
+# qmake "DEFINES+=RUN_UNIT_TESTS"
+contains(DEFINES, RUN_UNIT_TESTS) {
+    QT += testlib
+    CONFIG += testcase
+    TARGET = echoServer_tests
+}
+
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -27,6 +35,11 @@ SOURCES += \
     mytcpserver.cpp \
     database.cpp \
     clienthandler.cpp
+
+contains(DEFINES, RUN_UNIT_TESTS) {
+    SOURCES -= main.cpp
+    SOURCES += tst_des_ui.cpp
+}
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -12,6 +12,7 @@ class MainWindow : public QWidget
 public:
     explicit MainWindow(int clientId, QWidget *parent = nullptr);
     ~MainWindow();
+    static QString buildDesCommand(const QString &text, const QString &key, bool decrypt);
 
 private slots:
     void onHelpClicked();
