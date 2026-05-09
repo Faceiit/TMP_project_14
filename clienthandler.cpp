@@ -2,6 +2,8 @@
 #include "database.h"
 #include <QDebug>
 #include "md5.h"
+#include "DES.h"
+#include <QRegularExpression>
 
 int ClientHandler::s_nextId = 0;
 
@@ -80,7 +82,8 @@ void ClientHandler::helpMenu()
                  "QUIT - disconnect\r\n"
                  "\r\n"
                  "After authentication:\r\n"
-                 "DES <text> <key> - encrypt text via DES\r\n"
+                 "DES <text> <key> <true/false> - DES process, true=decrypt, false=encrypt\r\n"
+                 "DES DEC <hex> <key> - decrypt hex via DES\r\n"
                  "MD5 <text> - get MD5 hash\r\n"
                  "SECANT <args> - solve equation\r\n"
                  "GRAPH_CYCLE <args> - verify graph cycle\r\n"
@@ -128,7 +131,88 @@ void ClientHandler::handleLogout()
 
 void ClientHandler::handleDes(const QStringList &parts)
 {
-    sendResponse("DES result: not implemented yet.");
+    if (parts.size() < 3) {
+        sendResponse("Usage: DES <text> <key> <true/false> OR DES DEC <hex> <key>");
+        return;
+    }
+
+    auto parseBoolToken = [](const QString &token, bool &value) -> bool {
+        if (token.compare("true", Qt::CaseInsensitive) == 0 || token == "1") {
+            value = true;
+            return true;
+        }
+        if (token.compare("false", Qt::CaseInsensitive) == 0 || token == "0") {
+            value = false;
+            return true;
+        }
+        return false;
+    };
+
+    bool decrypt = false;
+    int dataStart = 1;
+    bool boolMode = false;
+
+    // Новый формат: DES <text> <key> <true/false>
+    if (parts.size() >= 4 && parseBoolToken(parts.last(), decrypt)) {
+        boolMode = true;
+    } else if (parts[1].compare("DEC", Qt::CaseInsensitive) == 0 ||
+        parts[1].compare("DECRYPT", Qt::CaseInsensitive) == 0) {
+        decrypt = true;
+        dataStart = 2;
+    } else if (parts[1].compare("ENC", Qt::CaseInsensitive) == 0 ||
+               parts[1].compare("ENCRYPT", Qt::CaseInsensitive) == 0) {
+        dataStart = 2;
+    }
+
+    if ((!boolMode && parts.size() <= dataStart + 1) || (boolMode && parts.size() < 4)) {
+        sendResponse("Usage: DES <text> <key> <true/false> OR DES DEC <hex> <key>");
+        return;
+    }
+
+    QString keyText;
+    QString dataText;
+
+    if (boolMode) {
+        keyText = parts[parts.size() - 2];
+        dataText = parts.mid(1, parts.size() - 3).join(" ");
+    } else {
+        keyText = parts.last();
+        dataText = parts.mid(dataStart, parts.size() - dataStart - 1).join(" ");
+    }
+
+    if (dataText.isEmpty() || keyText.isEmpty()) {
+        sendResponse("DES error: empty data or key.");
+        return;
+    }
+
+    QByteArray keyBytes = keyText.toUtf8();
+    if (keyBytes.size() < 8) {
+        keyBytes.append(8 - keyBytes.size(), char(0));
+    } else if (keyBytes.size() > 8) {
+        keyBytes = keyBytes.left(8);
+    }
+
+    DES des;
+
+    if (decrypt) {
+        static const QRegularExpression hexRe("^[0-9A-Fa-f]+$");
+        if (!hexRe.match(dataText).hasMatch() || (dataText.size() % 2 != 0)) {
+            sendResponse("DES error: for DEC mode data must be valid even-length hex.");
+            return;
+        }
+
+        const QByteArray encryptedBytes = QByteArray::fromHex(dataText.toLatin1());
+        QByteArray decrypted = des.process(encryptedBytes, keyBytes, true);
+
+        while (!decrypted.isEmpty() && decrypted.endsWith('\0')) {
+            decrypted.chop(1);
+        }
+
+        sendResponse("DES decrypted: " + QString::fromUtf8(decrypted));
+    } else {
+        const QByteArray encrypted = des.process(dataText.toUtf8(), keyBytes, false);
+        sendResponse("DES encrypted (hex): " + QString::fromLatin1(encrypted.toHex().toUpper()));
+    }
 }
 
 void ClientHandler::handleMd5(const QStringList &parts) {

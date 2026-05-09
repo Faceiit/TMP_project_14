@@ -126,6 +126,19 @@
     <string>Run DES</string>
    </property>
   </widget>
+  <widget class="QCheckBox" name="desDecryptCheckBox">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>170</y>
+     <width>130</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Decrypt mode</string>
+   </property>
+  </widget>
   <widget class="QLineEdit" name="md5InputEdit">
    <property name="geometry">
     <rect>

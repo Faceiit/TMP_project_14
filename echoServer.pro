@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     client.cpp \
+    DES.cpp \
     loginwindow.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -33,13 +34,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    DES.h \
     client.h \
     loginwindow.h \
     mainwindow.h \
     md5.h \
     mytcpserver.h \
     database.h \
-    ClientHandler.h
+    clienthandler.h
 
 FORMS += \
     loginwindow.ui \

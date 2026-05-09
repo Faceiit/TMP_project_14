@@ -63,13 +63,15 @@ void MainWindow::onDesClicked()
 {
     QString text = ui->desInputEdit->text().trimmed();
     QString key = ui->desKeyEdit->text().trimmed();
+    const bool decrypt = ui->desDecryptCheckBox->isChecked();
 
     if (text.isEmpty() || key.isEmpty()) {
         ui->outputText->append("Enter DES text and key.");
         return;
     }
 
-    QString cmd = QString("DES %1 %2").arg(text, key);
+    QString cmd = QString("DES %1 %2 %3")
+                      .arg(text, key, decrypt ? "true" : "false");
     Client::getInstance()->sendCommand(m_clientId, cmd);
 }
 
