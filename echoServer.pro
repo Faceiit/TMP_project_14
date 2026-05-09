@@ -39,6 +39,8 @@ SOURCES += \
 contains(DEFINES, RUN_UNIT_TESTS) {
     SOURCES -= main.cpp
     SOURCES += tst_des_ui.cpp
+    # Чтобы QTest находил файл при запуске из каталога сборки (shadow build)
+    TESTDATA += mainwindow.ui
 }
 
 # Default rules for deployment.

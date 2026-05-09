@@ -1,4 +1,5 @@
 #include <QtTest>
+#include <QByteArray>
 #include <QFile>
 #include "DES.h"
 #include "mainwindow.h"
@@ -49,8 +50,14 @@ void DesUiTests::des_build_command_decrypt_true()
 
 void DesUiTests::ui_contains_des_checkbox()
 {
-    QFile file("mainwindow.ui");
-    QVERIFY2(file.open(QIODevice::ReadOnly | QIODevice::Text), "Cannot open mainwindow.ui");
+    const QString uiPath = QFINDTESTDATA("mainwindow.ui");
+    QVERIFY2(!uiPath.isEmpty(), "testdata mainwindow.ui not found — run qmake with RUN_UNIT_TESTS; echoServer.pro must list TESTDATA += mainwindow.ui");
+
+    QFile file(uiPath);
+    const QByteArray openErr =
+        QStringLiteral("Cannot open mainwindow.ui at %1").arg(uiPath).toUtf8();
+    QVERIFY2(file.open(QIODevice::ReadOnly | QIODevice::Text),
+             openErr.constData());
     const QString xml = QString::fromUtf8(file.readAll());
 
     QVERIFY2(xml.contains("name=\"desDecryptCheckBox\""),
