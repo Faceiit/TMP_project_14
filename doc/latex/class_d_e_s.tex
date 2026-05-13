@@ -1,0 +1,100 @@
+\doxysection{DES Class Reference}
+\hypertarget{class_d_e_s}{}\label{class_d_e_s}\index{DES@{DES}}
+
+
+{\ttfamily \+\#include $<$DES.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_d_e_s_a6afc993e4320f7e26a5dda5e320ba61a}{DES}} ()
+\item 
+QByte\+Array \doxymbox{\hyperlink{class_d_e_s_a13aacdbcab3a74c1b4134fc2789f4384}{process}} (const QByte\+Array \&data, const QByte\+Array \&key, bool decrypt)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_d_e_s_a36cb73c864e8c4913f1f3859db69c882}{generate\+Subkeys}} (std::\+bitset$<$ 64 $>$ key)
+\item 
+std::\+bitset$<$ 28 $>$ \doxymbox{\hyperlink{class_d_e_s_ac936280f7f38e2b1d6c81e9fa612ae8e}{left\+Shift}} (std::\+bitset$<$ 28 $>$ bs, int n)
+\item 
+std::\+bitset$<$ 32 $>$ \doxymbox{\hyperlink{class_d_e_s_a5dd8e7fc01f35748cd6fb1bcb7e4767b}{f}} (std::\+bitset$<$ 32 $>$ R, std::\+bitset$<$ 48 $>$ k)
+\item 
+std::\+bitset$<$ 64 $>$ \doxymbox{\hyperlink{class_d_e_s_a2ba1a40d99b354310eee382c514b3a04}{bytes\+To\+Bitset}} (const QByte\+Array \&data)
+\item 
+QByte\+Array \doxymbox{\hyperlink{class_d_e_s_a8768c713e0aba8f065f3a9a7db60a974}{bitset\+To\+Bytes}} (std::\+bitset$<$ 64 $>$ bt)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ std::\+bitset$<$ 48 $>$ $>$ \doxymbox{\hyperlink{class_d_e_s_a67493ce7e70e4ee687942bbbe7a29483}{subkeys}}
+\end{DoxyCompactItemize}
+
+
+\label{class_d_e_s_doc-constructors}
+\Hypertarget{class_d_e_s_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_d_e_s_a6afc993e4320f7e26a5dda5e320ba61a}\index{DES@{DES}!DES@{DES}}
+\index{DES@{DES}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{DES()}{DES()}}
+{\footnotesize\ttfamily \label{class_d_e_s_a6afc993e4320f7e26a5dda5e320ba61a} 
+DES::\+\+DES (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{class_d_e_s_doc-func-members}
+\Hypertarget{class_d_e_s_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_d_e_s_a8768c713e0aba8f065f3a9a7db60a974}\index{DES@{DES}!bitsetToBytes@{bitsetToBytes}}
+\index{bitsetToBytes@{bitsetToBytes}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{bitsetToBytes()}{bitsetToBytes()}}
+{\footnotesize\ttfamily \label{class_d_e_s_a8768c713e0aba8f065f3a9a7db60a974} 
+QByte\+Array DES::\+bitset\+To\+Bytes (\begin{DoxyParamCaption}\item[{std::\+bitset$<$ 64 $>$}]{bt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_d_e_s_a2ba1a40d99b354310eee382c514b3a04}\index{DES@{DES}!bytesToBitset@{bytesToBitset}}
+\index{bytesToBitset@{bytesToBitset}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{bytesToBitset()}{bytesToBitset()}}
+{\footnotesize\ttfamily \label{class_d_e_s_a2ba1a40d99b354310eee382c514b3a04} 
+std::\+bitset$<$ 64 $>$ DES::\+bytes\+To\+Bitset (\begin{DoxyParamCaption}\item[{const QByte\+Array \&}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_d_e_s_a5dd8e7fc01f35748cd6fb1bcb7e4767b}\index{DES@{DES}!f@{f}}
+\index{f@{f}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{f()}{f()}}
+{\footnotesize\ttfamily \label{class_d_e_s_a5dd8e7fc01f35748cd6fb1bcb7e4767b} 
+std::\+bitset$<$ 32 $>$ DES::\+f (\begin{DoxyParamCaption}\item[{std::\+bitset$<$ 32 $>$}]{R}{, }\item[{std::\+bitset$<$ 48 $>$}]{k}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_d_e_s_a36cb73c864e8c4913f1f3859db69c882}\index{DES@{DES}!generateSubkeys@{generateSubkeys}}
+\index{generateSubkeys@{generateSubkeys}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{generateSubkeys()}{generateSubkeys()}}
+{\footnotesize\ttfamily \label{class_d_e_s_a36cb73c864e8c4913f1f3859db69c882} 
+void DES::\+generate\+Subkeys (\begin{DoxyParamCaption}\item[{std::\+bitset$<$ 64 $>$}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_d_e_s_ac936280f7f38e2b1d6c81e9fa612ae8e}\index{DES@{DES}!leftShift@{leftShift}}
+\index{leftShift@{leftShift}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{leftShift()}{leftShift()}}
+{\footnotesize\ttfamily \label{class_d_e_s_ac936280f7f38e2b1d6c81e9fa612ae8e} 
+std::\+bitset$<$ 28 $>$ DES::\+left\+Shift (\begin{DoxyParamCaption}\item[{std::\+bitset$<$ 28 $>$}]{bs}{, }\item[{int}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_d_e_s_a13aacdbcab3a74c1b4134fc2789f4384}\index{DES@{DES}!process@{process}}
+\index{process@{process}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily \label{class_d_e_s_a13aacdbcab3a74c1b4134fc2789f4384} 
+QByte\+Array DES::\+process (\begin{DoxyParamCaption}\item[{const QByte\+Array \&}]{data}{, }\item[{const QByte\+Array \&}]{key}{, }\item[{bool}]{decrypt}{}\end{DoxyParamCaption})}
+
+
+
+\label{class_d_e_s_doc-variable-members}
+\Hypertarget{class_d_e_s_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_d_e_s_a67493ce7e70e4ee687942bbbe7a29483}\index{DES@{DES}!subkeys@{subkeys}}
+\index{subkeys@{subkeys}!DES@{DES}}
+\doxysubsubsection{\texorpdfstring{subkeys}{subkeys}}
+{\footnotesize\ttfamily \label{class_d_e_s_a67493ce7e70e4ee687942bbbe7a29483} 
+std::\+vector$<$std::\+bitset$<$48$>$ $>$ DES::\+subkeys\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_d_e_s_8h}{DES.\+h}}\item 
+\doxymbox{\hyperlink{_d_e_s_8cpp}{DES.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,29 @@
+\doxysection{md5.\+h}
+\hypertarget{md5_8h_source}{}\label{md5_8h_source}\doxymbox{\hyperlink{md5_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MD5\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MD5\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QByteArray>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QtGlobal>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_m_d5}{MD5}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{static}\ QString\ \doxymbox{\hyperlink{class_m_d5_ad9c37121ff3494334a65d7ceb481773c}{hash}}(\textcolor{keyword}{const}\ QString\ \&text);}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Вспомогательные\ типы\ и\ константы}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{typedef}\ uint32\_t\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Основные\ функции\ трансформации}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ \doxymbox{\hyperlink{class_m_d5_acb76ff40cf77c766e02965b36e8181d4}{F}}(\doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ x,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ y,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ z)\ \{\ \textcolor{keywordflow}{return}\ (x\ \&\ y)\ |\ (\string~x\ \&\ z);\ \}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ \doxymbox{\hyperlink{class_m_d5_aca925503e3378561307e77c11b841668}{G}}(\doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ x,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ y,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ z)\ \{\ \textcolor{keywordflow}{return}\ (x\ \&\ z)\ |\ (y\ \&\ \string~z);\ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ \doxymbox{\hyperlink{class_m_d5_a3a3c997206ec18a91c638977f6b7145c}{H}}(\doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ x,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ y,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ z)\ \{\ \textcolor{keywordflow}{return}\ x\ \string^\ y\ \string^\ z;\ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ \doxymbox{\hyperlink{class_m_d5_a3b57adb52259cba76f3245238906b70e}{I}}(\doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ x,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ y,\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ z)\ \{\ \textcolor{keywordflow}{return}\ y\ \string^\ (x\ |\ \string~z);\ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ \doxymbox{\hyperlink{class_m_d5_ab00c4fdc34763daae2c35e775cc63e2f}{rotateLeft}}(\doxymbox{\hyperlink{class_m_d5_afc7e4c7fe254dea1566879424574954f}{uint4}}\ x,\ \textcolor{keywordtype}{int}\ n)\ \{\ \textcolor{keywordflow}{return}\ (x\ <<\ n)\ |\ (x\ >>\ (32\ -\/\ n));\ \}}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

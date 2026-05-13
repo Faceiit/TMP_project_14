@@ -1,0 +1,144 @@
+\doxysection{Database Class Reference}
+\hypertarget{class_database}{}\label{class_database}\index{Database@{Database}}
+
+
+{\ttfamily \+\#include $<$database.\+h$>$}
+
+Inheritance diagram for Database:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_database}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_database_a58decc35e5cf9370cfc4f5939c7dd45c}{add\+User}} (const QString \&login, const QString \&password)
+\item 
+bool \doxymbox{\hyperlink{class_database_a5141df0641c934f8585da0f7e8758534}{check\+User}} (const QString \&login, const QString \&password)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_database_a5a3b028f980a577ea0b809eb92312761}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\doxymbox{\hyperlink{class_database_a84d399a2ad58d69daab9b05330e1316d}{\texorpdfstring{$\sim$}{\string~}\+Database}} ()
+\item 
+\doxymbox{\hyperlink{class_database_a83f8b6d2941a4aee50f225e08e97291c}{Database}} (const \doxymbox{\hyperlink{class_database}{Database}} \&)=delete
+\item 
+\doxymbox{\hyperlink{class_database}{Database}} \& \doxymbox{\hyperlink{class_database_a46b93a4878076c7cfddd5b4058297f14}{operator=}} (const \doxymbox{\hyperlink{class_database}{Database}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QSql\+Database \doxymbox{\hyperlink{class_database_aea64d7d99483faec8f049cdd817bb693}{db}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_database_a42e130dace776ef032ac526bc7bce7b6}{p\+\_\+instance}} = nullptr
+\item 
+static \doxymbox{\hyperlink{class_singleton_destroyer}{Singleton\+Destroyer}} \doxymbox{\hyperlink{class_database_a7c687908311b999ab10153a69b414ad4}{destroyer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_database_aa93ce997b9645496c0e17460fba08432}{Singleton\+Destroyer}}
+\end{DoxyCompactItemize}
+
+
+\label{class_database_doc-constructors}
+\Hypertarget{class_database_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_database_a25acd0ba8ce00ebc6b331568d81e4230}\index{Database@{Database}!Database@{Database}}
+\index{Database@{Database}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{Database()}{Database()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_database_a25acd0ba8ce00ebc6b331568d81e4230} 
+Database::\+\+Database (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_database_a84d399a2ad58d69daab9b05330e1316d}\index{Database@{Database}!````~Database@{\texorpdfstring{$\sim$}{\string~}Database}}
+\index{````~Database@{\texorpdfstring{$\sim$}{\string~}Database}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Database()}{\string~Database()}}
+{\footnotesize\ttfamily \label{class_database_a84d399a2ad58d69daab9b05330e1316d} 
+Database::\+\texorpdfstring{$\sim$}{\string~}\+Database (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_database_a83f8b6d2941a4aee50f225e08e97291c}\index{Database@{Database}!Database@{Database}}
+\index{Database@{Database}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{Database()}{Database()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_database_a83f8b6d2941a4aee50f225e08e97291c} 
+Database::\+\+Database (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_database}{Database}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [delete]}}
+
+
+
+\label{class_database_doc-func-members}
+\Hypertarget{class_database_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_database_a58decc35e5cf9370cfc4f5939c7dd45c}\index{Database@{Database}!addUser@{addUser}}
+\index{addUser@{addUser}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{addUser()}{addUser()}}
+{\footnotesize\ttfamily \label{class_database_a58decc35e5cf9370cfc4f5939c7dd45c} 
+bool Database::\+add\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{, }\item[{const QString \&}]{password}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a5141df0641c934f8585da0f7e8758534}\index{Database@{Database}!checkUser@{checkUser}}
+\index{checkUser@{checkUser}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{checkUser()}{checkUser()}}
+{\footnotesize\ttfamily \label{class_database_a5141df0641c934f8585da0f7e8758534} 
+bool Database::\+check\+User (\begin{DoxyParamCaption}\item[{const QString \&}]{login}{, }\item[{const QString \&}]{password}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_database_a5a3b028f980a577ea0b809eb92312761}\index{Database@{Database}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_database_a5a3b028f980a577ea0b809eb92312761} 
+\doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*} Database::\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_database_a46b93a4878076c7cfddd5b4058297f14}\index{Database@{Database}!operator=@{operator=}}
+\index{operator=@{operator=}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_database_a46b93a4878076c7cfddd5b4058297f14} 
+\doxymbox{\hyperlink{class_database}{Database}} \& Database::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_database}{Database}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [delete]}}
+
+
+
+\label{class_database_doc-related-members}
+\Hypertarget{class_database_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_database_aa93ce997b9645496c0e17460fba08432}\index{Database@{Database}!SingletonDestroyer@{SingletonDestroyer}}
+\index{SingletonDestroyer@{SingletonDestroyer}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{SingletonDestroyer}{SingletonDestroyer}}
+{\footnotesize\ttfamily \label{class_database_aa93ce997b9645496c0e17460fba08432} 
+friend class \doxymbox{\hyperlink{class_singleton_destroyer}{Singleton\+Destroyer}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\label{class_database_doc-variable-members}
+\Hypertarget{class_database_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_database_aea64d7d99483faec8f049cdd817bb693}\index{Database@{Database}!db@{db}}
+\index{db@{db}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{db}{db}}
+{\footnotesize\ttfamily \label{class_database_aea64d7d99483faec8f049cdd817bb693} 
+QSql\+Database Database::\+db\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_database_a7c687908311b999ab10153a69b414ad4}\index{Database@{Database}!destroyer@{destroyer}}
+\index{destroyer@{destroyer}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{destroyer}{destroyer}}
+{\footnotesize\ttfamily \label{class_database_a7c687908311b999ab10153a69b414ad4} 
+\doxymbox{\hyperlink{class_singleton_destroyer}{Singleton\+Destroyer}} Database::\+destroyer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_database_a42e130dace776ef032ac526bc7bce7b6}\index{Database@{Database}!p\_instance@{p\_instance}}
+\index{p\_instance@{p\_instance}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{p\_instance}{p\_instance}}
+{\footnotesize\ttfamily \label{class_database_a42e130dace776ef032ac526bc7bce7b6} 
+\doxymbox{\hyperlink{class_database}{Database}} \texorpdfstring{$\ast$}{*} Database::\+p\+\_\+instance = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{database_8h}{database.\+h}}\item 
+\doxymbox{\hyperlink{database_8cpp}{database.\+cpp}}\end{DoxyCompactItemize}

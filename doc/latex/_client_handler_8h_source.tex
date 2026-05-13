@@ -1,0 +1,54 @@
+\doxysection{Client\+Handler.\+h}
+\hypertarget{_client_handler_8h_source}{}\label{_client_handler_8h_source}\doxymbox{\hyperlink{_client_handler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CLIENTHANDLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CLIENTHANDLER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTcpSocket>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QStringList>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QByteArray>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_client_handler_a81ddf663ca4cf08558d7cc5397d23e23}{ClientHandler}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ Q\_OBJECT}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_client_handler_a81ddf663ca4cf08558d7cc5397d23e23}{ClientHandler}}(QTcpSocket*\ socket,\ QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00014\ \ \ \ \ \doxymbox{\hyperlink{class_client_handler_a202c875fbf38e4a52975f6c173f78127}{\string~ClientHandler}}();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ signals:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_a393f5ceeb8fdfc791de93d56ed10e595}{disconnected}}(\doxymbox{\hyperlink{class_client_handler_a81ddf663ca4cf08558d7cc5397d23e23}{ClientHandler}}*\ handler);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_a232b13b7e231e00a2ddbd98de6e104ce}{onReadyRead}}();}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_acc85a10c15db2cfc12faeed47edd9781}{onDisconnected}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_ac4211953e290a3aa69db1a2d2d1d982d}{processCommand}}(\textcolor{keyword}{const}\ QString\ \&cmd);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_a239f3251db5bb96750c385bddb40d171}{sendResponse}}(\textcolor{keyword}{const}\ QString\ \&msg);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Базовые\ команды}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_ab1ab28a58eecf23071454a8f083ce157}{helpMenu}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_af63184355629c766655ea063f4b448b0}{handleQuit}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Авторизация}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_a5e74bf2a259451a5bfec80b853341590}{handleRegister}}(\textcolor{keyword}{const}\ QStringList\ \&parts);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_a878dbb71846247a7535929fdee5cb074}{handleLogin}}(\textcolor{keyword}{const}\ QStringList\ \&parts);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_a3cdc13d3ad7efffd2011fbfab2955df5}{handleLogout}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Рабочие\ методы\ проекта}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_aa1b4f5eedf5c1df1586dedd36b5bc775}{handleDes}}(\textcolor{keyword}{const}\ QStringList\ \&parts);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_a9f6f61b99ba51fcf859f7b97b5da7eb0}{handleMd5}}(\textcolor{keyword}{const}\ QStringList\ \&parts);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_ae18343dd07996d9fe922270f75e57a5e}{handleSecant}}(\textcolor{keyword}{const}\ QStringList\ \&parts);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_client_handler_ac580da11d4048a5a9d25c844c3639536}{handleGraphCycle}}(\textcolor{keyword}{const}\ QStringList\ \&parts);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ QTcpSocket*\ \doxymbox{\hyperlink{class_client_handler_acf8aee20c56e8356fc9d18e6ada1e910}{m\_socket}};}
+\DoxyCodeLine{00043\ \ \ \ \ QByteArray\ \doxymbox{\hyperlink{class_client_handler_a169fb2ad99570c7f6c19a788cc748fc0}{m\_buffer}};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_client_handler_a005e17fe915532b5595730f011934b3f}{m\_authenticated}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_client_handler_a2c0228b8519dab75c5a4fda90c74877f}{m\_clientId}};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_client_handler_a34c353cfd9dab0f449c4b25fa7dbaf33}{s\_nextId}};}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CLIENTHANDLER\_H}}
+
+\end{DoxyCode}

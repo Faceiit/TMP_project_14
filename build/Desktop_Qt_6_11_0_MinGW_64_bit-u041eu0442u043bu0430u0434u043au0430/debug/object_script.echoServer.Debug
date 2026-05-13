@@ -1,0 +1,15 @@
+debug/client.o
+debug/DES.o
+debug/loginwindow.o
+debug/main.o
+debug/mainwindow.o
+debug/md5.o
+debug/mytcpserver.o
+debug/database.o
+debug/clienthandler.o
+debug/moc_client.o
+debug/moc_loginwindow.o
+debug/moc_mainwindow.o
+debug/moc_mytcpserver.o
+debug/moc_database.o
+debug/moc_clienthandler.o

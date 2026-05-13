@@ -1,0 +1,15 @@
+release/client.o
+release/DES.o
+release/loginwindow.o
+release/main.o
+release/mainwindow.o
+release/md5.o
+release/mytcpserver.o
+release/database.o
+release/clienthandler.o
+release/moc_client.o
+release/moc_loginwindow.o
+release/moc_mainwindow.o
+release/moc_mytcpserver.o
+release/moc_database.o
+release/moc_clienthandler.o

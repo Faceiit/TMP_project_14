@@ -1,0 +1,191 @@
+\doxysection{Client Class Reference}
+\hypertarget{class_client}{}\label{class_client}\index{Client@{Client}}
+
+
+{\ttfamily \+\#include $<$client.\+h$>$}
+
+Inheritance diagram for Client:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_client}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_client_a3469fa303ab46702fe060be41af1cc70}{response\+Received}} (int client\+Id, QString response)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_client_a840e519ca781888cbd54181572ebe3a7}{\texorpdfstring{$\sim$}{\string~}\+Client}} ()
+\item 
+int \doxymbox{\hyperlink{class_client_af988f4e571b94d0ffb82cf5670580c12}{create\+Connection}} (const QString \&host, quint16 port)
+\item 
+void \doxymbox{\hyperlink{class_client_a8d77c18be595832cec0bdd1ca52a7b20}{send\+Command}} (int client\+Id, const QString \&cmd)
+\item 
+void \doxymbox{\hyperlink{class_client_a69bc5888ac30e5fbbdc8244e6eb8862d}{disconnect\+Client}} (int client\+Id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_client}{Client}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_client_ae60032c9d89d51ffa76963e4cd773f76}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_client_a1e1df136ba1989a25261aed93a46c6a1}{on\+Ready\+Read}} ()
+\item 
+void \doxymbox{\hyperlink{class_client_a08ff657a2f3fd8719bbb8dde50a66e99}{on\+Disconnected}} ()
+\item 
+void \doxymbox{\hyperlink{class_client_afced02db2be09fcce1b99d12b4368dba}{on\+Error}} (QAbstract\+Socket::\+\+Socket\+Error socket\+Error)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_client_a5b62b1caeb5c2c35a2ae367851d3ad92}{Client}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\doxymbox{\hyperlink{class_client_a3d2cabd89d497461bb4604a5014ee75d}{Client}} (const \doxymbox{\hyperlink{class_client}{Client}} \&)=delete
+\item 
+\doxymbox{\hyperlink{class_client}{Client}} \& \doxymbox{\hyperlink{class_client_a4dc1df05decda1789fb3431063afd685}{operator=}} (const \doxymbox{\hyperlink{class_client}{Client}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+QMap$<$ int, QTcp\+Socket \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_client_ad431dba7c3132569fada0fb4323263ef}{m\+\_\+clients}}
+\item 
+QMap$<$ int, QByte\+Array $>$ \doxymbox{\hyperlink{class_client_a4689a5c08d06e00f2e37e099700c96b2}{m\+\_\+buffers}}
+\item 
+int \doxymbox{\hyperlink{class_client_a0f007b8702c64b4a271af7889738010f}{m\+\_\+next\+Client\+Id}} = 0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_client}{Client}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_client_a2b768fa77948211e40ce05f027363a9f}{p\+\_\+instance}} = nullptr
+\item 
+static \doxymbox{\hyperlink{class_client_singleton_destroyer}{Client\+Singleton\+Destroyer}} \doxymbox{\hyperlink{class_client_aebd13d47b3e2a53ecf1fc36600fe1b5a}{destroyer}}
+\end{DoxyCompactItemize}
+
+
+\label{class_client_doc-constructors}
+\Hypertarget{class_client_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_client_a5b62b1caeb5c2c35a2ae367851d3ad92}\index{Client@{Client}!Client@{Client}}
+\index{Client@{Client}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{Client()}{Client()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_client_a5b62b1caeb5c2c35a2ae367851d3ad92} 
+Client::\+\+Client (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [private]}}
+
+\Hypertarget{class_client_a3d2cabd89d497461bb4604a5014ee75d}\index{Client@{Client}!Client@{Client}}
+\index{Client@{Client}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{Client()}{Client()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_client_a3d2cabd89d497461bb4604a5014ee75d} 
+Client::\+\+Client (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_client}{Client}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\Hypertarget{class_client_a840e519ca781888cbd54181572ebe3a7}\index{Client@{Client}!````~Client@{\texorpdfstring{$\sim$}{\string~}Client}}
+\index{````~Client@{\texorpdfstring{$\sim$}{\string~}Client}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Client()}{\string~Client()}}
+{\footnotesize\ttfamily \label{class_client_a840e519ca781888cbd54181572ebe3a7} 
+Client::\+\texorpdfstring{$\sim$}{\string~}\+Client (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{class_client_doc-func-members}
+\Hypertarget{class_client_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_client_af988f4e571b94d0ffb82cf5670580c12}\index{Client@{Client}!createConnection@{createConnection}}
+\index{createConnection@{createConnection}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{createConnection()}{createConnection()}}
+{\footnotesize\ttfamily \label{class_client_af988f4e571b94d0ffb82cf5670580c12} 
+int Client::\+create\+Connection (\begin{DoxyParamCaption}\item[{const QString \&}]{host}{, }\item[{quint16}]{port}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_client_a69bc5888ac30e5fbbdc8244e6eb8862d}\index{Client@{Client}!disconnectClient@{disconnectClient}}
+\index{disconnectClient@{disconnectClient}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{disconnectClient()}{disconnectClient()}}
+{\footnotesize\ttfamily \label{class_client_a69bc5888ac30e5fbbdc8244e6eb8862d} 
+void Client::\+disconnect\+Client (\begin{DoxyParamCaption}\item[{int}]{client\+Id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_client_ae60032c9d89d51ffa76963e4cd773f76}\index{Client@{Client}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_client_ae60032c9d89d51ffa76963e4cd773f76} 
+\doxymbox{\hyperlink{class_client}{Client}} \texorpdfstring{$\ast$}{*} Client::\+get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_client_a08ff657a2f3fd8719bbb8dde50a66e99}\index{Client@{Client}!onDisconnected@{onDisconnected}}
+\index{onDisconnected@{onDisconnected}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{onDisconnected}{onDisconnected}}
+{\footnotesize\ttfamily \label{class_client_a08ff657a2f3fd8719bbb8dde50a66e99} 
+void Client::\+on\+Disconnected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\Hypertarget{class_client_afced02db2be09fcce1b99d12b4368dba}\index{Client@{Client}!onError@{onError}}
+\index{onError@{onError}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{onError}{onError}}
+{\footnotesize\ttfamily \label{class_client_afced02db2be09fcce1b99d12b4368dba} 
+void Client::\+on\+Error (\begin{DoxyParamCaption}\item[{QAbstract\+Socket::\+\+Socket\+Error}]{socket\+Error}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\Hypertarget{class_client_a1e1df136ba1989a25261aed93a46c6a1}\index{Client@{Client}!onReadyRead@{onReadyRead}}
+\index{onReadyRead@{onReadyRead}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{onReadyRead}{onReadyRead}}
+{\footnotesize\ttfamily \label{class_client_a1e1df136ba1989a25261aed93a46c6a1} 
+void Client::\+on\+Ready\+Read (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+\Hypertarget{class_client_a4dc1df05decda1789fb3431063afd685}\index{Client@{Client}!operator=@{operator=}}
+\index{operator=@{operator=}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_client_a4dc1df05decda1789fb3431063afd685} 
+\doxymbox{\hyperlink{class_client}{Client}} \& Client::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_client}{Client}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\Hypertarget{class_client_a3469fa303ab46702fe060be41af1cc70}\index{Client@{Client}!responseReceived@{responseReceived}}
+\index{responseReceived@{responseReceived}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{responseReceived}{responseReceived}}
+{\footnotesize\ttfamily \label{class_client_a3469fa303ab46702fe060be41af1cc70} 
+void Client::\+response\+Received (\begin{DoxyParamCaption}\item[{int}]{client\+Id}{, }\item[{QString}]{response}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_client_a8d77c18be595832cec0bdd1ca52a7b20}\index{Client@{Client}!sendCommand@{sendCommand}}
+\index{sendCommand@{sendCommand}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{sendCommand()}{sendCommand()}}
+{\footnotesize\ttfamily \label{class_client_a8d77c18be595832cec0bdd1ca52a7b20} 
+void Client::\+send\+Command (\begin{DoxyParamCaption}\item[{int}]{client\+Id}{, }\item[{const QString \&}]{cmd}{}\end{DoxyParamCaption})}
+
+
+
+\label{class_client_doc-variable-members}
+\Hypertarget{class_client_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_client_aebd13d47b3e2a53ecf1fc36600fe1b5a}\index{Client@{Client}!destroyer@{destroyer}}
+\index{destroyer@{destroyer}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{destroyer}{destroyer}}
+{\footnotesize\ttfamily \label{class_client_aebd13d47b3e2a53ecf1fc36600fe1b5a} 
+\doxymbox{\hyperlink{class_client_singleton_destroyer}{Client\+Singleton\+Destroyer}} Client::\+destroyer\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_client_a4689a5c08d06e00f2e37e099700c96b2}\index{Client@{Client}!m\_buffers@{m\_buffers}}
+\index{m\_buffers@{m\_buffers}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{m\_buffers}{m\_buffers}}
+{\footnotesize\ttfamily \label{class_client_a4689a5c08d06e00f2e37e099700c96b2} 
+QMap$<$int, QByte\+Array$>$ Client::\+m\+\_\+buffers\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_client_ad431dba7c3132569fada0fb4323263ef}\index{Client@{Client}!m\_clients@{m\_clients}}
+\index{m\_clients@{m\_clients}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{m\_clients}{m\_clients}}
+{\footnotesize\ttfamily \label{class_client_ad431dba7c3132569fada0fb4323263ef} 
+QMap$<$int, QTcp\+Socket\texorpdfstring{$\ast$}{*}$>$ Client::\+m\+\_\+clients\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_client_a0f007b8702c64b4a271af7889738010f}\index{Client@{Client}!m\_nextClientId@{m\_nextClientId}}
+\index{m\_nextClientId@{m\_nextClientId}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{m\_nextClientId}{m\_nextClientId}}
+{\footnotesize\ttfamily \label{class_client_a0f007b8702c64b4a271af7889738010f} 
+int Client::\+m\+\_\+next\+Client\+Id = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_client_a2b768fa77948211e40ce05f027363a9f}\index{Client@{Client}!p\_instance@{p\_instance}}
+\index{p\_instance@{p\_instance}!Client@{Client}}
+\doxysubsubsection{\texorpdfstring{p\_instance}{p\_instance}}
+{\footnotesize\ttfamily \label{class_client_a2b768fa77948211e40ce05f027363a9f} 
+\doxymbox{\hyperlink{class_client}{Client}} \texorpdfstring{$\ast$}{*} Client::\+p\+\_\+instance = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{client_8h}{client.\+h}}\item 
+build/\+\+Desktop\+\_\+\+Qt\+\_\+6\+\_\+11\+\_\+0\+\_\+\+Min\+GW\+\_\+64\+\_\+bit-\/u041eu0442u043bu0430u0434u043au0430/\+debug/\+\doxymbox{\hyperlink{moc__client_8cpp}{moc\+\_\+client.\+cpp}}\item 
+\doxymbox{\hyperlink{client_8cpp}{client.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,48 @@
+\doxysection{database.\+h}
+\hypertarget{database_8h_source}{}\label{database_8h_source}\doxymbox{\hyperlink{database_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DATABASE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DATABASE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QSqlDatabase>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QSqlQuery>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QSqlError>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_database}{Database}};\ \textcolor{comment}{//\ Опережающее\ объявление}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Класс\ для\ автоматического\ удаления\ синглтона}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_singleton_destroyer}{SingletonDestroyer}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \doxymbox{\hyperlink{class_database}{Database}}*\ \doxymbox{\hyperlink{class_singleton_destroyer_a09f48c17898d2467b53b46afe422de94}{p\_instance}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \doxymbox{\hyperlink{class_singleton_destroyer_a8ac3166871f4c5411edfdb13594dee15}{\string~SingletonDestroyer}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_singleton_destroyer_afdc7cbe570f71a975d82a1d556501f21}{initialize}}(\doxymbox{\hyperlink{class_database}{Database}}*\ p)\ \{\ \doxymbox{\hyperlink{class_singleton_destroyer_a09f48c17898d2467b53b46afe422de94}{p\_instance}}\ =\ p;\ \}}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}}*\ \doxymbox{\hyperlink{class_database_a42e130dace776ef032ac526bc7bce7b6}{p\_instance}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_database_aa93ce997b9645496c0e17460fba08432}{SingletonDestroyer}}\ \doxymbox{\hyperlink{class_database_a7c687908311b999ab10153a69b414ad4}{destroyer}};}
+\DoxyCodeLine{00026\ \ \ \ \ QSqlDatabase\ \doxymbox{\hyperlink{class_database_aea64d7d99483faec8f049cdd817bb693}{db}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}}(QObject*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{class_database_a84d399a2ad58d69daab9b05330e1316d}{\string~Database}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{class_database_a83f8b6d2941a4aee50f225e08e97291c}{Database}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}}\&)\ =\ \textcolor{keyword}{delete};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Запрещаем\ копирование}}
+\DoxyCodeLine{00032\ \ \ \ \ \doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}}\&\ \doxymbox{\hyperlink{class_database_a46b93a4878076c7cfddd5b4058297f14}{operator=}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}}\&)\ =\ \textcolor{keyword}{delete};\ \textcolor{comment}{//\ Запрещаем\ присваивание}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_database_aa93ce997b9645496c0e17460fba08432}{SingletonDestroyer}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_database_a25acd0ba8ce00ebc6b331568d81e4230}{Database}}*\ \doxymbox{\hyperlink{class_database_a5a3b028f980a577ea0b809eb92312761}{getInstance}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Методы\ из\ вашего\ исходного\ кода}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_database_a58decc35e5cf9370cfc4f5939c7dd45c}{addUser}}(\textcolor{keyword}{const}\ QString\&\ login,\ \textcolor{keyword}{const}\ QString\&\ password);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_database_a5141df0641c934f8585da0f7e8758534}{checkUser}}(\textcolor{keyword}{const}\ QString\&\ login,\ \textcolor{keyword}{const}\ QString\&\ password);}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DATABASE\_H\#pragma\ once}}
+
+\end{DoxyCode}

@@ -1,0 +1,30 @@
+\doxysection{mytcpserver.\+h}
+\hypertarget{mytcpserver_8h_source}{}\label{mytcpserver_8h_source}\doxymbox{\hyperlink{mytcpserver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MYTCPSERVER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MYTCPSERVER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTcpServer>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QList>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_client_handler_8h}{clienthandler.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_my_tcp_server_acf367c4695b4d160c7a2d25c2afaaec4}{MyTcpServer}}\ :\ \textcolor{keyword}{public}\ QObject}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_my_tcp_server_acf367c4695b4d160c7a2d25c2afaaec4}{MyTcpServer}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00014\ \ \ \ \ \doxymbox{\hyperlink{class_my_tcp_server_ab39e651ff7c37c152215c02c225e79ef}{\string~MyTcpServer}}();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_my_tcp_server_a279d03cb8ba78335f554756be9670b19}{onNewConnection}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_my_tcp_server_adf656ab2db931bf562959e36c1273b31}{onClientDisconnected}}(\doxymbox{\hyperlink{class_client_handler}{ClientHandler}}\ *handler);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ QTcpServer\ *\doxymbox{\hyperlink{class_my_tcp_server_ab3580c615335713cb8d7b03a24ca954e}{m\_tcpServer}};}
+\DoxyCodeLine{00022\ \ \ \ \ QList<ClientHandler*>\ \doxymbox{\hyperlink{class_my_tcp_server_a43a4093d63cb08e5a674272f1d5ae675}{m\_clients}};}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MYTCPSERVER\_H}}
+
+\end{DoxyCode}
